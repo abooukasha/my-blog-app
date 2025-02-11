@@ -3,7 +3,7 @@ import BlogList from "./BlogList";
 import useFetch from "../UseFetch";
 function Home() {
   const { data, isPending, error } = useFetch(
-    "https://jsonplaceholder.typicode.com/posts"
+    "https://jsonplaceholder.typicode.com/posts/"
   );
 
   return (

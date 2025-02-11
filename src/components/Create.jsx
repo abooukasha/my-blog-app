@@ -1,21 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 function Create() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [author, setAuthor] = useState("");
+  const [name, setName] = useState("");
   const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("userName");
+    if (savedName) {
+      setName(savedName);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const timeStamp = new Date().toISOString();
 
-    const blog = { title, body, author, timeStamp };
+    const blog = { title, body, timeStamp };
 
     setIsPending("true");
 
-    fetch("http://localhost:8000/blogs", {
+    fetch("https://jsonplaceholder.typicode.com/posts/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blog),
@@ -46,8 +53,8 @@ function Create() {
         <input
           type="text"
           required
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         {/* <label>
           <select value={author} onChange={(e) => setAuthor(e.target.value)}>

@@ -6,6 +6,18 @@ function Navbar() {
         <Link to="/">
           <h1>Dojo Blog</h1>
         </Link>
+        <div className="sign-up">
+          <Link
+            to="/signup"
+            style={{
+              color: "white",
+              backgroundColor: "#6458c0",
+              borderRadius: "8px",
+            }}
+          >
+            LogIn
+          </Link>
+        </div>
 
         <div className="links">
           <Link

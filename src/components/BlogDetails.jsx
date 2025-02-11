@@ -7,11 +7,11 @@ function BlogDetails() {
     data: blog,
     isPending,
     error,
-  } = useFetch("http://localhost:8000/blogs/" + id);
+  } = useFetch("https://jsonplaceholder.typicode.com/posts/" + id);
   const navigate = useNavigate();
 
   const handleClick = () => {
-    fetch("http://localhost:8000/blogs/" + blog.id, {
+    fetch("https://jsonplaceholder.typicode.com/posts/" + blog.id, {
       method: "DELETE",
     }).then(() => {
       navigate("/");
